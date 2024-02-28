@@ -6,6 +6,7 @@
     <title>Solution Pattern: Migrating from Red Hat Fuse to Red build of Apache Camel :: Solution Patterns for Cloud Native Architectures</title>
     <link rel="canonical" href="https://redhat-solution-patterns.github.io/solution-patterns/solution-pattern-camel-migration/03-demo.html">
     <link rel="prev" href="02-architecture.html">
+    <link rel="next" href="dev-resources.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
@@ -114,7 +115,7 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <span class="nav-text"><a href="https://redhat-solution-patterns.github.io/" target="_blank" rel="noopener">4. Other Red Hat Solution Patterns</a></span>
+    <a class="nav-link" href="dev-resources.html">Developer Resources</a>
   </li>
 </ul>
   </li>
@@ -173,7 +174,7 @@
 <p><a href="https://drive.google.com/file/d/1DqTrlydgvJiKTe7y6oxuvY8K-SAve9xc/view?usp=drive_link" target="_blank" rel="noopener">Running the migrated application on Openshift</a></p>
 </li>
 <li>
-<p><a href="https://drive.google.com/file/d/11CBxNI_2QI77uFeD7Dxqf32uDnAt9cKX/view?usp=drive_link" target="_blank" rel="noopener">Running the migrated application as a Camelk serverless function</a></p>
+<p><a href="https://drive.google.com/file/d/11CBxNI_2QI77uFeD7Dxqf32uDnAt9cKX/view?usp=drive_link" target="_blank" rel="noopener">Running the migrated application as a Camel K serverless function</a></p>
 </li>
 </ul>
 </div>
@@ -181,7 +182,7 @@
 <div class="sect2">
 <h3 id="_overview"><a class="anchor" href="#_overview"></a><a class="link" href="#_overview">1.2. Overview</a></h3>
 <div class="paragraph">
-<p>The templates are available in the following repository: <a href="https://github.com/mthirion/fuse-to-camel3-camelk" class="bare">https://github.com/mthirion/fuse-to-camel3-camelk</a></p>
+<p>The templates are available in the following repository: <a href="https://github.com/mthirion/fuse-to-camel3-camelk" target="_blank" rel="noopener">https://github.com/mthirion/fuse-to-camel3-camelk </a></p>
 </div>
 <div class="ulist">
 <ul>
@@ -206,8 +207,7 @@
 <p>So, there is a subdirectory for each of the most used Camel components (REST API, SOAP, JMS&#8230;&#8203;) further divided per runtime (Quarkus and Springboot).</p>
 </div>
 <div class="paragraph">
-<p>+
-<span class="image"><img src="_images/repo-templates.png" alt="repo templates" width="60%"></span></p>
+<p><span class="image"><img src="_images/repo-templates.png" alt="repo templates"></span></p>
 </div>
 <div class="paragraph">
 <p>Next, you can learn how to walkthrough this demo.</p>
@@ -297,13 +297,13 @@ Here below, we&#8217;ll call this namespace 'claimdemo-migration'.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_preparing_camelk_optional"><a class="anchor" href="#_preparing_camelk_optional"></a><a class="link" href="#_preparing_camelk_optional">2.2.4. Preparing CamelK (optional)</a></h4>
+<h4 id="_preparing_camel_k_optional"><a class="anchor" href="#_preparing_camel_k_optional"></a><a class="link" href="#_preparing_camel_k_optional">2.2.4. Preparing Camel K (optional)</a></h4>
 <div class="paragraph">
-<p>If you want to test the migrated application as a serverless component, you&#8217;ll need an Openshift server with CamelK installed.<br>
-Install the Red Hat CamelK Operator to your Openshift cluster.
+<p>If you want to test the migrated application as a serverless component, you&#8217;ll need an Openshift server with Camel K installed.<br>
+Install the Red Hat Camel K Operator to your Openshift cluster.
 Optionaly you can also deploy the Openshift Serverless (Knative Serving and Knative Eventing) operators.<br>
-Make sure you also have the kamel CLI on your local machine, and of the same version as the CamelK Operator.<br>
-For clarity, we&#8217;ll use a separate namespace for Camelk-related artefacts.  Let&#8217;s call it camel-migration.<br></p>
+Make sure you also have the kamel CLI on your local machine, and of the same version as the Camel K Operator.<br>
+For clarity, we&#8217;ll use a separate namespace for Camel K-related artefacts.  Let&#8217;s call it camel-migration.<br></p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -311,8 +311,8 @@ For clarity, we&#8217;ll use a separate namespace for Camelk-related artefacts. 
 </div>
 </div>
 <div class="paragraph">
-<p>Custom beans such as custom Camel processors as considered by Camelk as external dependencies.<br>
-Those dependencies need to be made available to CamelK at deployment/build time. <br>
+<p>Custom beans such as custom Camel processors as considered by Camel K as external dependencies.<br>
+Those dependencies need to be made available to Camel K at deployment/build time. <br>
 The best way to do that is to use an external Maven repository, such as Nexus.<br>
 It can be deployed on or outside of Openshift but needs to be reachable from it.</p>
 </div>
@@ -555,13 +555,13 @@ $ curl http://$ROUTE/cxf/status/custId/789</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_turning_the_migrated_application_into_a_camelk_serverless_function"><a class="anchor" href="#_turning_the_migrated_application_into_a_camelk_serverless_function"></a><a class="link" href="#_turning_the_migrated_application_into_a_camelk_serverless_function">2.3.2. Turning the migrated application into a CamelK serverless function</a></h4>
+<h4 id="_turning_the_migrated_application_into_a_camcamel_kelk_serverless_function"><a class="anchor" href="#_turning_the_migrated_application_into_a_camcamel_kelk_serverless_function"></a><a class="link" href="#_turning_the_migrated_application_into_a_camcamel_kelk_serverless_function">2.3.2. Turning the migrated application into a CamCamel KelK serverless function</a></h4>
 <div class="paragraph">
 <p>The template makes use of the new IO XML format, which makes the migrated application immediately compatible with Camel K.<br></p>
 </div>
 <div class="paragraph">
-<p>As mentioned, with CamelK, the Java dependencies (custom Camel processor) need to be made externaly available, for example thanks to a Nexus repository<br>
-To do that, you can use the helpers found in the camelk template directory, which will be refered to as $CAMELK<br></p>
+<p>As mentioned, with Camel K, the Java dependencies (custom Camel processor) need to be made externaly available, for example thanks to a Nexus repository<br>
+To do that, you can use the helpers found in the Camel K template directory, which will be refered to as $CAMELK<br></p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -576,7 +576,7 @@ To do that, you can use the helpers found in the camelk template directory, whic
 <li>
 <p><strong>Import of the Java library</strong><br></p>
 <div class="paragraph">
-<p>Copy the org.blogdemo.claimdemo.ClaimProcessor java class to the camelk "javadependency" directory.</p>
+<p>Copy the org.blogdemo.claimdemo.ClaimProcessor java class to the Camel K "javadependency" directory.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -662,7 +662,7 @@ public static ClaimProcessor camelbean() {
 </div>
 </div>
 <div class="paragraph">
-<p>You are ready to deploy the application as a CamelK Integration<br>
+<p>You are ready to deploy the application as a Camel K Integration<br>
 Simply run:</p>
 </div>
 <div class="literalblock">
@@ -688,7 +688,7 @@ $ kamel run --name camelk-migration \
 </td>
 <td class="content">
 Entry configuration prefixes such as "%prod.", "%dev." etc might be misinterpreted by Camel K and lead to a deployment error.<br>
-Feel free to comment out those lines, that are not required by the CamelK framework.
+Feel free to comment out those lines, that are not required by the Camel K framework.
 </td>
 </tr>
 </table>
@@ -699,6 +699,7 @@ Feel free to comment out those lines, that are not required by the CamelK framew
 </div>
 <nav class="pagination">
   <span class="prev"><a href="02-architecture.html" class="query-params-link">2. Architecture</a></span>
+  <span class="next"><a href="dev-resources.html" class="query-params-link">Developer Resources</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
