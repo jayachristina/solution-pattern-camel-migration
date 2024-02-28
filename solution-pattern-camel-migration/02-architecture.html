@@ -227,6 +227,56 @@ Camel-based integration logic can be written in XML or Java, and can behave as a
 It&#8217;s suggested that such an application targets the Quarkus runtime.
 The provided Quarkus template is 100% compatible with CamelK, so the resutling migrated application is immediately ready to be added to a serverless stack.</p>
 </div>
+<div class="paragraph">
+<p>The material can be used to migrate any Fuse 6 or 7 distribution to the Red Hat Build of Apache Camel.
+The demos will however focus on migrating a Fuse 6 application, and more concretely a Camel v2.17 one, in Blueprint XML format, running on Karaf 2. The XML format will be converted to the optimized IO XML one.
+This path has been chosen for the demonstration because it can be considered the hardest one. Applications running on Fuse 7, no matter which distribution, could use the same approach and will bnefit from a shortest migration effort.</p>
+</div>
+<div class="paragraph">
+<p>In general, the following migration strategy should be considered:</p>
+</div>
+<div class="paragraph">
+<p>Language
+* If you have integrations in Java, keep them in Java DSL
+* If you have integrations in XML, migrate to the optimized IO XML</p>
+</div>
+<div class="paragraph">
+<p>Runtime</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you are already on Fuse 7 springboot, migrate toward springboot</p>
+</li>
+<li>
+<p>In any other cases, you could target Quarkus</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Target
+Probably, the target should remain a "standard" container application, ready for Serverless but not mandatorily a Function.
+Thus, the demos will showcase several migrations to "plain" springboot or quarkus applications, and there will be one extra demo to showcase a migration from that result to Camel K.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="more_tech"><a class="anchor" href="#more_tech"></a><a class="link" href="#more_tech">4. How can the solution pattern help ?</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Fuse / Apache Camel based application can be seen as a composition of multiple layers: the Apache Camel layer, the runtime layer (i.e. OSGI) and the platform layer (i.e. Karaf/Fabric8).</p>
+</div>
+<div class="paragraph">
+<p>![Standard approach](../assets/images/runtimes-0.png?raw=true)</p>
+</div>
+<div class="paragraph">
+<p>Theoretically, the migration would involve changes in all layers.
+The material here consists in ready to use templates that are already perfectly suitable for the target so that the migration effort will be reduced to a small subset of changes on the Apache Camel layers.
+The templates are Maven artifacts, preconfigured with all required dependencies, and holding all the needed placeholders to migrate code and configuration in a timely fashion.</p>
+</div>
+<div class="paragraph">
+<p>![Templates-based approach](../assets/images/runtimes-1.png?raw=true)</p>
+</div>
 </div>
 </div>
 <nav class="pagination">
